@@ -1,0 +1,526 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Tesla-inspired Monochrome Base */
+    --background: 0 0% 98%; /* #F9FAFB */
+    --foreground: 217 33% 17%; /* #111827 - dark headings */
+
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 217 33% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 33% 17%;
+
+    --primary: 217 33% 17%; /* Dark gray-black #111827 */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 14% 96%; /* #F3F4F6 - subtle contrast */
+    --secondary-foreground: 217 33% 17%;
+
+    --muted: 220 14% 96%; /* #F3F4F6 */
+    --muted-foreground: 215 16% 47%; /* #6B7280 - medium gray */
+
+    /* Duolingo-inspired Accent - Emerald Green */
+    --accent: 160 84% 39%; /* #00A676 - vibrant emerald */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 91%; /* Light gray border */
+    --input: 220 13% 91%;
+    --ring: 160 84% 39%; /* Accent color for focus */
+
+    --radius: 0.75rem; /* 12px - rounded yet sharp */
+
+    /* Sidebar Theme - Tesla Sleek */
+    --sidebar-background: 217 33% 17%; /* Dark gray-black */
+    --sidebar-foreground: 0 0% 98%; /* Light text */
+    
+    --sidebar-gradient-start: 217 33% 17%;
+    --sidebar-gradient-middle: 215 28% 20%;
+    --sidebar-gradient-end: 217 33% 17%;
+
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 217 33% 17%;
+    
+    --sidebar-accent: 160 84% 39%; /* Emerald accent */
+    --sidebar-accent-foreground: 0 0% 100%;
+    
+    --sidebar-border: 215 16% 25%;
+    --sidebar-ring: 160 84% 39%;
+    
+    /* Secondary Accents for Gamification */
+    --accent-blue: 217 91% 60%; /* #3B82F6 */
+    --accent-orange: 38 92% 50%; /* #F59E0B */
+    --accent-lime: 84 100% 67%; /* #A9FF68 - alternative accent */
+    
+    /* Enhanced Color Palette */
+    --gradient-primary: linear-gradient(135deg, #00A676 0%, #059669 100%);
+    --gradient-secondary: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    --gradient-gamified: linear-gradient(135deg, #A9FF68 0%, #00A676 100%);
+    --gradient-warm: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    
+    /* Glass Effects */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    
+    /* Premium Shadows - Soft Tesla Style */
+    --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 4px 16px -4px rgba(0, 0, 0, 0.08);
+    --shadow-large: 0 8px 32px -8px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 20px rgba(0, 166, 118, 0.3); /* Emerald glow */
+    --shadow-glow-hover: 0 0 30px rgba(0, 166, 118, 0.5);
+  }
+
+  .dark {
+    --background: 217 33% 10%; /* Dark mode background */
+    --foreground: 0 0% 98%;
+    --card: 217 33% 13%;
+    --card-foreground: 0 0% 98%;
+    --popover: 217 33% 13%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 217 33% 17%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 160 84% 39%; /* Emerald stays consistent */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 28% 20%;
+    --input: 215 28% 20%;
+    --ring: 160 84% 39%;
+
+    --sidebar-background: 217 33% 13%; 
+    --sidebar-foreground: 0 0% 98%;
+    
+    --sidebar-gradient-start: 217 33% 13%; 
+    --sidebar-gradient-middle: 215 28% 17%;
+    --sidebar-gradient-end: 217 33% 13%; 
+
+    --sidebar-primary: 0 0% 98%; 
+    --sidebar-primary-foreground: 217 33% 13%;
+    
+    --sidebar-accent: 160 84% 39%; 
+    --sidebar-accent-foreground: 0 0% 98%; 
+    
+    --sidebar-border: 215 28% 25%;
+    --sidebar-ring: 160 84% 39%;
+
+    --glass-bg: rgba(10, 10, 20, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-nunito;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    line-height: 1.7; /* Comfortable reading - Duolingo influence */
+    letter-spacing: 0;
+    font-size: 16px;
+  }
+
+  /* Typography Enhancements - Tesla Geometric + Duolingo Rounded */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-satoshi;
+    letter-spacing: -0.025em;
+    font-weight: 700; /* Bold for Tesla confidence */
+    color: hsl(var(--foreground));
+  }
+
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px; /* Slightly wider for better grab */
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--sidebar-gradient-end) / 0.1); /* Use sidebar theme color */
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, hsl(var(--sidebar-gradient-start)), hsl(var(--sidebar-gradient-middle)));
+    border-radius: 4px;
+    border: 2px solid transparent; /* Creates padding around thumb */
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, hsl(var(--sidebar-gradient-start) / 0.8), hsl(var(--sidebar-gradient-middle) / 0.8));
+  }
+}
+
+@layer components {
+  /* Glass Morphism - Updated for sidebar context */
+  .glass-sidebar-component { /* specific for components within sidebar if needed */
+    background: hsl(var(--sidebar-gradient-middle) / 0.1);
+    backdrop-filter: blur(var(--glass-blur, 10px)); /* Allow override */
+    -webkit-backdrop-filter: blur(var(--glass-blur, 10px));
+    border: 1px solid hsl(var(--sidebar-border) / 0.2);
+    box-shadow: var(--shadow-medium); /* Softer shadow for components */
+  }
+
+  /* Enhanced Gradients */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-tertiary {
+    background: var(--gradient-tertiary);
+  }
+
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+
+  .gradient-cool {
+    background: var(--gradient-cool);
+  }
+
+  /* Enhanced Shadows */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Magnetic Button Effect - Duolingo Playfulness */
+  .btn-magnetic {
+    @apply relative overflow-hidden transition-all duration-300 ease-out;
+    transform-style: preserve-3d;
+  }
+
+  .btn-magnetic:hover {
+    @apply shadow-glow-hover;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-glow-hover);
+  }
+
+  .btn-magnetic:active {
+    transform: translateY(0) scale(1.02);
+  }
+
+  .btn-magnetic::before {
+    content: '';
+    @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+    mix-blend-mode: overlay;
+  }
+
+  .btn-magnetic:hover::before {
+    @apply opacity-10;
+  }
+
+  /* Bounce Micro-interaction */
+  .btn-bounce-on-click:active {
+    animation: bounce-click 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  @keyframes bounce-click {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+  }
+
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+    }
+  }
+
+  /* Stagger Animation */
+  .stagger-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: stagger-fade-in 0.6s ease-out forwards;
+  }
+
+  .stagger-fade-in:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-fade-in:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-fade-in:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-fade-in:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .stagger-fade-in:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
+  @keyframes stagger-fade-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced Card Hover */
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+    transform-style: preserve-3d;
+  }
+
+  .card-hover:hover {
+    @apply shadow-large;
+    transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+  }
+
+  /* Animated Background */
+  .animated-bg {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  }
+
+  /* Floating Particles */
+  .particles {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particles::before,
+  .particles::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    animation: float-particle 20s infinite linear;
+    pointer-events: none;
+  }
+
+  .particles::before {
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+  }
+
+  .particles::after {
+    bottom: -100px;
+    right: -100px;
+    animation-delay: -10s;
+  }
+
+  @keyframes float-particle {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(100px, -100px) rotate(90deg);
+    }
+    50% {
+      transform: translate(-50px, -200px) rotate(180deg);
+    }
+    75% {
+      transform: translate(-150px, -50px) rotate(270deg);
+    }
+  }
+
+  /* Enhanced Loading */
+  .loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
+
+@layer utilities {
+  .font-inter {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .font-jakarta {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-bounce {
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* Enhanced Backdrop Blur */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  .text-shadow-soft {
+    text-shadow: 0 1px 2px hsl(var(--sidebar-gradient-start) / 0.5);
+  }
+  .icon-glow {
+    filter: drop-shadow(0 0 5px hsl(var(--sidebar-accent-foreground) / 0.7));
+  }
+
+  /* Dynamic Content Animation Keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Animation utility classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+
+  .animate-slide-in-up {
+    animation: slideInUp 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out;
+  }
+}
