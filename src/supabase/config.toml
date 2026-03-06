@@ -1,0 +1,78 @@
+project_id = "nhxbezsignftahfzljos"
+
+[auth]
+enabled = true
+site_url = "https://id-preview--d4fa74db-84ea-40f3-b6a1-243edb1699c6.lovable.app/"
+additional_redirect_urls = ["https://lovable.app"]
+jwt_expiry = 3600
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false
+
+[functions.ai-conversation-manager]
+verify_jwt = true
+
+[functions.ai-message-manager]
+verify_jwt = true
+
+[functions.background-course-generation]
+verify_jwt = false
+
+[functions.cancel-generation]
+verify_jwt = true
+
+[functions.chatbot-ai]
+verify_jwt = true
+
+[functions.content-recovery]
+verify_jwt = false
+
+[functions.curriculum-rag-generator]
+verify_jwt = true
+
+[functions.edit-course]
+verify_jwt = true
+
+[functions.finalize-course]
+verify_jwt = false
+
+[functions.generate-course]
+verify_jwt = true
+
+[functions.generate-course-document]
+verify_jwt = true
+
+[functions.generate-course-parallel]
+verify_jwt = false
+
+[functions.generate-course-phase]
+verify_jwt = false
+
+[functions.generate-course-phased]
+verify_jwt = true
+
+[functions.generate-questions]
+verify_jwt = true
+
+[functions.get-optimized-course-data]
+verify_jwt = true
+
+[functions.handle-course-invitation]
+verify_jwt = false
+
+[functions.pdf-parser]
+verify_jwt = true
+
+[functions.send-course-invitation]
+verify_jwt = true
+
+[functions.ui-shell-generator]
+verify_jwt = true
+
+[functions.token-tracker]
+verify_jwt = true
+
+[functions.recalculate-conversation-stats]
+verify_jwt = true
